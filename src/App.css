@@ -1,4 +1,10 @@
-body, html, #root {
-    height: 100%;
+.container {
     margin: 0
 }
+
+@media only screen and (min-width: 1024px) {
+    body, html, #root  {
+        height: 100%;
+    }
+};
+

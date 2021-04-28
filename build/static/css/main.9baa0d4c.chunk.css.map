@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/App.css"],"names":[],"mappings":"AAAA,WACI,QACJ,CAEA,0CACI,gBACI,WACJ,CACJ","file":"main.9baa0d4c.chunk.css","sourcesContent":[".container {\n    margin: 0\n}\n\n@media only screen and (min-width: 1024px) {\n    body, html, #root  {\n        height: 100%;\n    }\n};\n\n"]}
