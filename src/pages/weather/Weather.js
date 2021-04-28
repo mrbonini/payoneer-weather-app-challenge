@@ -11,7 +11,7 @@ import moment from 'moment';
 
 const styles = makeStyles({
     root: {
-        padding: isDesktop ? '2em 10em' : '2em 0.5em',
+        padding: isDesktop ? '2em 10em' : '2em',
         background: 'aliceblue',
         height: '100%'
     },
@@ -139,7 +139,7 @@ export default function Weather(props) {
                     </IconButton>
                 }
             </Grid>
-            <Grid className={classes.section} container direction='row' justify='space-evenly' alignItems='center' spacing={isDesktop ? 2 : 1}>
+            <Grid className={classes.section} container direction='row' justify='space-evenly' alignItems='center' spacing={2}>
                 {
                     cardsToRender?.length &&
                     cardsToRender.map((card, idx) => {
@@ -149,7 +149,7 @@ export default function Weather(props) {
                             <Grid 
                                 key={`card-${idx}`}
                                 item 
-                                xs={12} sm={8} md={3}
+                                xs={10} sm={7} md={3}
                                 style={{
                                     opacity: view.selectedCard === idx ? 0.5 : 1
                                 }}
@@ -184,7 +184,7 @@ export default function Weather(props) {
                         
                         return <Grid item xs={1} key={`bar-chart-${idx}`} >
                             <WeatherBarCharts
-                                time={moment.unix(bar.dt).format('LT')}
+                                time={bar.dt_txt.split(' ')[1]}
                                 percentage={percentage}
                                 temp={`${isDesktop ? bar.main.temp : Math.round(bar.main.temp)}° ${data.selectedTemperature === 'celcius' ? 'C' : 'F'}`}
                             />
