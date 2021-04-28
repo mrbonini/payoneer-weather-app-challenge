@@ -1,6 +1,5 @@
 {
   "name": "weather-app",
-  "homepage": "http://mrbonini.github.io/payoneer-weather-app-challenge",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
