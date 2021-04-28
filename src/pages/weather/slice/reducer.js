@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { BASE_SLICE_PATH } from "./constants";
 import { createSliceReducer } from "../../../store/factories";
 
