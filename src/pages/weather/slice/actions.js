@@ -2,7 +2,7 @@ import { BASE_SLICE_PATH } from "./constants";
 import Axios from 'axios';
 import { createSliceBasicActions } from "../../../store/factories";
 
-const API_PATH = 'http://api.openweathermap.org/data/2.5/forecast?q=Munich,de&APPID=75f972b80e26f14fe6c920aa6a85ad57&cnt=40';
+const API_PATH = 'https://api.openweathermap.org/data/2.5/forecast?q=Munich,de&APPID=75f972b80e26f14fe6c920aa6a85ad57&cnt=40';
 
 const getResource = async (tempScale) => Axios.get(`${API_PATH}&units=${tempScale === 'celcius' ? 'metric' : 'imperial'}`);
 
