@@ -22,8 +22,8 @@ const styles = makeStyles({
         position: 'relative',
     },
     cardContent: {
-        marginTop: '2em',
-        marginBottom: '2em'
+        marginTop: '4em',
+        marginBottom: '4em'
     },
     cardImage: {
         height: '100%', 
@@ -43,8 +43,17 @@ const styles = makeStyles({
         border: '1px solid black', 
         marginBottom: '1em'
     },
-    text: {
+    cardTitle: {
         textAlign: 'center'
+    },
+    mainText: {
+        fontSize: '2em',
+        fontWeight: 600,
+        textAlign: 'center'
+    },
+    text: {
+        textAlign: 'center',
+        fontSize: '1.25em'
     }
 });
 
@@ -114,7 +123,7 @@ export default function Weather(props) {
         <Loading />
         : view.hasError ?
         <Loading hasError={view.error} />
-        : <Container className={classes.root} maxWidth='xl'>
+        : <Container className={classes.root} maxWidth='lg'>
             <Grid className={classes.section} container direction='row' justify='space-between' alignItems='center'>
                 <RadioGroup value={data.selectedTemperature} onChange={handleChange} >
                     <FormControlLabel value="celcius" control={<Radio color='primary' />} label="Celcius" />
@@ -149,7 +158,7 @@ export default function Weather(props) {
                             <Grid 
                                 key={`card-${idx}`}
                                 item 
-                                xs={10} sm={7} md={3}
+                                xs={10} sm={5} md={4} 
                                 style={{
                                     opacity: view.selectedCard === idx ? 0.5 : 1
                                 }}
@@ -160,7 +169,7 @@ export default function Weather(props) {
                                 }}
                             >
                                 <WeatherCard 
-                                    date={firstCard.dt_txt.split(' ')[0]}
+                                    date={moment(firstCard.dt_txt.split(' ')[0]).format('DD, MMM YYYY')}
                                     mainWeather={
                                         firstCard.weather[0]?.main === 'Clouds' ? 'fas fa-cloud' 
                                         : firstCard.weather[0]?.main === 'Rain' ? 'fas fa-cloud-rain'
@@ -182,7 +191,7 @@ export default function Weather(props) {
                     data.barCharts.map((bar, idx) => {
                         const percentage = data.selectedTemperature === 'celcius' ? bar.main.temp : (bar.main.temp - 32) * (5 / 9)
                         
-                        return <Grid item xs={1} key={`bar-chart-${idx}`} >
+                        return <Grid item xs={3} sm ={2} md={1} key={`bar-chart-${idx}`} >
                             <WeatherBarCharts
                                 time={bar.dt_txt.split(' ')[1]}
                                 percentage={percentage}
@@ -243,23 +252,23 @@ function WeatherCard(props) {
                 <CardContent>
                     <img src={WeatherImage} className={classes.cardImage} />
                     <Grid className={classes.cardContent} container direction='row' justify='center' alignItems='flex-start' spacing={3}>
-                        <Grid item xs={12} className={classes.text}>
+                        <Grid item xs={12} className={classes.cardTitle}>
                             <Typography variant='h4'>
                                 Munich, DE <Icon style={{width: '2em'}} className={mainWeather} />
                             </Typography>
                         </Grid>
                         <Grid item xs={12} />
                         <Grid item xs={12}>
-                            <Typography className={classes.text}> {date} </Typography>
+                            <Typography className={classes.mainText}> {date} </Typography>
                         </Grid>
                         <Grid item container direction='row' justify='center' alignItems='center' xs={12}>
                             <Grid item xs={6}>
-                                <Typography className={classes.text}> 
+                                <Typography className={classes.text} style={{fontSize: '2em'}}> 
                                     <Icon className='fas fa-tint' /> {humidity} 
                                 </Typography>
                             </Grid>
                             <Grid item xs={6}>
-                                <Typography className={classes.text}> 
+                                <Typography className={classes.text} style={{fontSize: isDesktop ? '2em' : '1.5em'}}> 
                                     <Icon className='fas fa-temperature-low' /> 
                                     {temp} 
                                 </Typography>
