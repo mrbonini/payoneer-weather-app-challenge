@@ -169,7 +169,7 @@ export default function Weather(props) {
                                 }}
                             >
                                 <WeatherCard 
-                                    date={moment(firstCard.dt_txt.split(' ')[0]).format('DD, MMM YYYY')}
+                                    date={moment(firstCard.dt_txt.split(' ')[0]).format('Do of MMM, YYYY')}
                                     mainWeather={
                                         firstCard.weather[0]?.main === 'Clouds' ? 'fas fa-cloud' 
                                         : firstCard.weather[0]?.main === 'Rain' ? 'fas fa-cloud-rain'
